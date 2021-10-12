@@ -148,7 +148,7 @@ void loop(void)  {
   // turn off SPS30
   int ret = sps30.sleep();
   // sleep cycle
-  for (int i = 1; i <= 8; i++)  {  // 124s = 8x16s sleep, only toggle display
+    for (int i = 1; i <= 8; i++)  {  // 124s =8x16s sleep
     displayState = toggleButton(BUTTON_A, displayState, buttonAstate, lastTimeToggle, timeDebounce);
     if (displayState)  { // turn display on with data
       display.clearDisplay();
