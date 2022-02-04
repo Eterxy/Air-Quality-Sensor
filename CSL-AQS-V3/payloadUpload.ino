@@ -1,6 +1,8 @@
 /*
   Write to Google Sheets through a Wifi POST HTTP1.1 request to a Google script.
 */
+#include "HTTPSRedirect.h"
+
 void payloadUpload(String payload) {
   for (int i = 1; i < 4; i++) { // allways try to connect to wifi
     if (password != "") // if password is not empty
@@ -16,6 +18,8 @@ void payloadUpload(String payload) {
       Serial.print("payload: ");
       payload = payload_base + String("\"") + payload + String("\"}");
       Serial.println(payload);
+      printRedir();
+      GETCommand = _Request;
       // Make a HTTP request:
       client.println(POSTCommand);
       client.println("Host: script.google.com");
@@ -26,7 +30,10 @@ void payloadUpload(String payload) {
       client.println();
       client.print(payload);
       client.println();
+      client.println(GETCommand);
       delay(200);
+
+
 
       if (client.available())
         Serial.println("Response: ");

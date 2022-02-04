@@ -27,6 +27,7 @@
    AMALIA TORRES, CUNY, July 2021
 
 */
+
 #include <SPI.h>
 #include <SD.h>
 #include <Wire.h>
@@ -38,9 +39,11 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
 #include <WiFi101.h>
+#include <Adafruit_ZeroDMA.h>
 #include "sps30.h" // this is Paul van Haastrecht library, not Sensirion's https://github.com/paulvha/sps30.git
 #include <HoneywellTruStabilitySPI.h> // for differential pressure sensor for Met https://github.com/huilab/HoneywellTruStabilitySPI.git
 #include "arduino_secrets.h" // wifi name and password in .h file. see tab
+#include "HTTPSRedirect.h"
 
 #define VBATPIN A7  // this is also D9 button A disable pullup to read analog
 #define BUTTON_A  9 // Oled button also A7 enable pullup to read button
@@ -52,6 +55,7 @@
 char ssid[] = SECRET_SSID;    // your network SSID (name)
 char password[] = SECRET_PASS;    // your network password (use for WPA, or use as key for WEP)
 String POSTCommand = String("POST /macros/s/") + String(GSSD_ID) + String("/exec?value=Hello HTTP/1.1");      // Google Sheets Script Deployment ID
+String GETCommand;
 char server[] = "script.google.com"; // name address for Google scripts as we are communicationg with the scripg (using DNS)
 // these are the commands to be sent to the google script: namely add a row to last in Sheet1 with the values TBD
 String payload_base =  "{\"command\":\"appendRow\",\"sheet_name\":\"Sheet1\",\"values\":";
@@ -153,8 +157,8 @@ void loop(void)  {
       display.clearDisplay();
       display.display();
     };
-    int sleepMS = Watchdog.sleep();// remove comment for low power
-    //delay(16000); // uncomment to debug because serial communication doesn't come back after sleeping
+    //int sleepMS = Watchdog.sleep();// remove comment for low power
+    delay(16000); // uncomment to debug because serial communication doesn't come back after sleeping
   }
   ret = sps30.wakeup(); // turn on SPS30
 }
