@@ -77,7 +77,7 @@ For instructions on getting the AQS connected with a Google Spreadsheet, take a 
 ### Air-Quality-Sensor-V3
 This is our latest version of our Air Quality Sensor. The code on this page is the latest code. Version 2.2 of the AQS has the particulate matter code and has a different diplay board. The new screen is bigger now and uses different code in the file " initializeOLED.ino "
 ### Air-Quality-Sensor-V2.1
-Code from version 2.1 of the Air Quality Sensor can be seen on the branch [Version-2.1](https://github.com/Community-Sensor-Lab/Air-Quality-Sensor/tree/Version-2.1)
+Code from version 2.1 of the Air Quality Sensor can be seen on the branch [Version-2.1](https://github.com/Community-Sensor-Lab/Air-Quality-Sensor/tree/CSL-AQS-V2.1)
 ### Air-Quality-Sensor-v1
 Code from the first version of the Air Quality Sensor can be seen on the branch [Version-1](https://github.com/Community-Sensor-Lab/Air-Quality-Sensor/tree/Version-1)
->>>>>>> 0638ff72a75dee49da651496fa4cb009fbc28ff5
+
